@@ -9,6 +9,7 @@ setup(name='gcs-file-lock',
       author_email='hello@thinkingmachin.es',
       license='Apache License 2.0',
       install_requires=[
+          backoff
       ],
       packages=find_packages(),
       zip_safe=False)
