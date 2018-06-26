@@ -4,6 +4,18 @@ A global file-based mutex lock using Google Cloud Storage. Supports retries with
 
 This library is inspired by [gcslock](https://github.com/marcacohen/gcslock).
 
+## Use Cases
+
+Use this if:
+
+- You just want a simple, serverless, global lock
+- The app is high-latency (i.e. batch ETL processes)
+- You have a long-running distributed compute process
+
+Don't use this for:
+
+- Low-latency applications
+
 ## Installation
 
 ```bash
