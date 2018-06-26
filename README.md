@@ -15,6 +15,7 @@ Use this if:
 Don't use this for:
 
 - Low-latency applications
+- Low-latency locks
 
 ## Installation
 
