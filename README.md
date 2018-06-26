@@ -6,11 +6,11 @@ The mutex is created with GCS [consistency](https://cloud.google.com/storage/doc
 
 ## Use Cases
 
-Use this if:
+Use this for:
 
-- You just want a simple, serverless, global lock
-- The app is high-latency (i.e. batch ETL processes)
-- You have a long-running distributed compute process
+- If you just want a simple, serverless, global lock
+- High-latency applications (i.e. batch ETL processes)
+- Long-running, distributed compute processes
 
 Don't use this for:
 
