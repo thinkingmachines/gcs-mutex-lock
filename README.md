@@ -7,7 +7,7 @@ This library is inspired by [gcslock](https://github.com/marcacohen/gcslock).
 ## Installation
 
 ```bash
-pip install (this repo)
+pip install git+https://github.com/thinkingmachines/gcs-mutex-lock.git
 ```
 
 ## Usage
