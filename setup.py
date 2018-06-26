@@ -9,7 +9,7 @@ setup(name='gcs-mutex-lock',
       author_email='hello@thinkingmachin.es',
       license='Apache License 2.0',
       install_requires=[
-          backoff
+          'backoff'
       ],
       packages=find_packages(),
       zip_safe=False)
