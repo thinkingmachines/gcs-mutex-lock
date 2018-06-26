@@ -1,13 +1,21 @@
-# gcs-file-lock
+# gcs-mutex-lock
 
-A global file lock using Google Cloud Storage. Supports retries with exponential backoff via [backoff](https://github.com/litl/backoff).
+A global file-based mutex lock using Google Cloud Storage. Supports retries with exponential backoff via [backoff](https://github.com/litl/backoff).
+
+This library is inspired by [gcslock](https://github.com/marcacohen/gcslock).
+
+## Installation
+
+```bash
+pip install (this repo)
+```
 
 ## Usage
 
 Simple usage:
 
 ```python
-from gcs_file_lock import gcs_lock
+from gcs_mutex_lock import gcs_lock
 
 # Acquire a lock
 acquired = gcs_lock.lock('gs://bucket-name/lock-name')
@@ -20,10 +28,10 @@ gcs_lock.unlock('gs://bucket-name/lock-name')
 Wait for lock to be freed, then acquire it:
 
 ```python
-from gcs_file_lock import gcs_lock
+from gcs_mutex_lock import gcs_lock
 
 # Acquire lock, then retry with (truncated) exponential backoff
-acquired = gcs_lock.wait_for_lock_expo('gs://psc-demand/dataflow/temp_lock.txt', max_time=60)
+acquired = gcs_lock.wait_for_lock_expo('gs://bucket-name/lock-name')
 print(acquired)
 ```
 
@@ -31,7 +39,7 @@ print(acquired)
 
 To configure backoff parameters, see the [backoff](https://github.com/litl/backoff) library.
 
-The backoff parameters can be passed as `*args` and `**kwargs` to any of the backoff functions (i.e. `wait_for_lock_expo`).
+The backoff parameters can be passed as `*args` and `**kwargs` to any of the `wait_for_lock` functions.
 
 ### Exponential Backoff w/Jitter
 

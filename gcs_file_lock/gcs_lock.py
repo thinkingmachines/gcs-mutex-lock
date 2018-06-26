@@ -48,14 +48,15 @@ def wait_for_lock(lock_path, *backoff_args, **backoff_kwargs):
     backoff_lock()
 
 
-def wait_for_lock_expo(lock_path, base=2, factor=1, max_value=10, jitter=backoff.full_jitter):
+def wait_for_lock_expo(lock_path, base=2, factor=1, max_value=10, max_time=60, jitter=backoff.full_jitter, *args, **kwargs):
     """
     A helper function for `wait_for_lock` that uses exponential backoff.
     :param lock_path:  the lock's GCS path with the gs://bucket-name/file-name format
     :param base: waiting time (sec) is: factor * (base ** n)
     :param factor: waiting time (sec) is: factor * (base ** n)
-    :param max_value: max waiting time, in seconds
+    :param max_value: the ceiling value for retry time, in seconds
+    :param max_time: total retry timeout, in seconds
     :param jitter: See backoff.on_predicate for details. Pass jitter=None for no jitter.
     :return: If the lock was acquired or not
     """
-    wait_for_lock(lock_path, wait_gen=backoff.expo, base=base, factor=factor, max_value=max_value, jitter=jitter)
+    wait_for_lock(lock_path, wait_gen=backoff.expo, base=base, factor=factor, max_value=max_value, jitter=jitter, *args, **kwargs)
