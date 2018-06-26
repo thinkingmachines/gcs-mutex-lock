@@ -18,6 +18,7 @@ Don't use this for:
 
 - Low-latency applications
 - Low-latency locks
+- Client-side applications
 
 ## Installation
 
