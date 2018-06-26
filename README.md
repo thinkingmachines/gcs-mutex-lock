@@ -2,7 +2,7 @@
 
 A global file-based mutex lock using Google Cloud Storage, inspired by [gcslock](https://github.com/marcacohen/gcslock). Supports retries with exponential backoff via [backoff](https://github.com/litl/backoff).
 
-The mutex is guaranteed by GCS [consistency](https://cloud.google.com/storage/docs/consistency) guarantees.
+The mutex is created with GCS [consistency](https://cloud.google.com/storage/docs/consistency) guarantees.
 
 ## Use Cases
 
