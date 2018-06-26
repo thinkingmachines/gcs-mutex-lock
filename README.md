@@ -28,8 +28,6 @@ gcs_lock.unlock('gs://bucket-name/lock-name')
 Wait for lock to be freed, then acquire it:
 
 ```python
-from gcs_mutex_lock import gcs_lock
-
 # Acquire lock, then retry with (truncated) exponential backoff
 acquired = gcs_lock.wait_for_lock_expo('gs://bucket-name/lock-name')
 print(acquired)
@@ -37,9 +35,9 @@ print(acquired)
 
 ## Backoff
 
-To configure backoff parameters, see the [backoff](https://github.com/litl/backoff) library.
+To configure backoff parameters, see the [backoff](https://github.com/litl/backoff) docs.
 
-The backoff parameters can be passed as `*args` and `**kwargs` to any of the `wait_for_lock` functions.
+The backoff parameters can be passed as `*args` and `**kwargs` to any of the `wait_for_lock*` functions.
 
 ### Exponential Backoff w/Jitter
 
