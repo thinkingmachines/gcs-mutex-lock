@@ -37,7 +37,6 @@ def wait_for_lock(lock_path, *backoff_args, **backoff_kwargs):
     """
     Tries to acquire the specified lock. If the lock cannot be acquired, waits for the lock to be freed.
     :param lock_path: the lock's GCS path with the gs://bucket-name/file-name format
-    :param wait_gen: A generator yielding successive wait times in seconds.
     :param backoff_args: Args to be passed to @backoff.on_predicate
     :param backoff_kwargs: Kwargs to be passed to @backoff.on_predicate
     :return: If the lock was acquired or not
