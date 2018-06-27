@@ -42,13 +42,16 @@ def wait_for_lock(lock_path, *backoff_args, **backoff_kwargs):
     :param backoff_kwargs: Kwargs to be passed to @backoff.on_predicate
     :return: If the lock was acquired or not
     """
+
     @backoff.on_predicate(*backoff_args, **backoff_kwargs)
     def backoff_lock():
         return lock(lock_path)
-    backoff_lock()
+
+    return backoff_lock()
 
 
-def wait_for_lock_expo(lock_path, base=2, factor=1, max_value=10, max_time=60, jitter=backoff.full_jitter, *args, **kwargs):
+def wait_for_lock_expo(lock_path, base=2, factor=1, max_value=10, max_time=60, jitter=backoff.full_jitter, *args,
+                       **kwargs):
     """
     A helper function for `wait_for_lock` that uses exponential backoff.
     :param lock_path:  the lock's GCS path with the gs://bucket-name/file-name format
@@ -59,4 +62,5 @@ def wait_for_lock_expo(lock_path, base=2, factor=1, max_value=10, max_time=60, j
     :param jitter: See backoff.on_predicate for details. Pass jitter=None for no jitter.
     :return: If the lock was acquired or not
     """
-    wait_for_lock(lock_path, wait_gen=backoff.expo, base=base, factor=factor, max_value=max_value, jitter=jitter, *args, **kwargs)
+    return wait_for_lock(lock_path, wait_gen=backoff.expo, base=base, factor=factor, max_value=max_value,
+                         max_time=max_time, jitter=jitter, *args, **kwargs)
