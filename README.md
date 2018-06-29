@@ -1,5 +1,8 @@
 # gcs-mutex-lock
 
+[![CircleCI](https://circleci.com/gh/thinkingmachines/gcs-mutex-lock/tree/master.svg?style=shield)](https://circleci.com/gh/thinkingmachines/gcs-mutex-lock/tree/master)
+[![License](http://img.shields.io/:license-Apache%202-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0.txt)
+
 A global file-based mutex lock using Google Cloud Storage, inspired by [gcslock](https://github.com/marcacohen/gcslock). Supports retries with exponential backoff via [backoff](https://github.com/litl/backoff).
 
 The mutex is created with GCS [consistency](https://cloud.google.com/storage/docs/consistency) guarantees.
