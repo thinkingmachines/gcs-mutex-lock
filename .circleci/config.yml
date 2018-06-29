@@ -22,19 +22,25 @@ jobs:
           command: |
             python3 -m venv venv
             . venv/bin/activate
-            pip install .
+            pip install -r requirements.txt
 
       - save_cache:
           paths:
             - ./venv
           key: v1-dependencies-{{ checksum "requirements.txt" }}
 
+      # prepare testing environment
+      - run:
+          name: prepare testing env
+          command: |
+            gsutil rm gs://psc-demand/dataflow/hello.txt
+
       # run tests!
       - run:
           name: run tests
           command: |
             . venv/bin/activate
-            python -m test.py
+            python -m pytest tests
 
       - store_artifacts:
           path: test-reports
