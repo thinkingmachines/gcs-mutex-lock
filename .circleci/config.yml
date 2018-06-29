@@ -4,7 +4,7 @@ jobs:
   build:
     docker:
       # With this image as the primary container, this is where all `steps` will run
-      - image: circleci/python:3.6.1
+      - image: circleci/python:3.6.6-jessie
     working_directory: ~/repo
 
     steps:
@@ -33,6 +33,7 @@ jobs:
       - run:
           name: install gcloud
           command: |
+            echo
             export CLOUD_SDK_REPO="cloud-sdk-$(lsb_release -c -s)"
             echo "deb http://packages.cloud.google.com/apt $CLOUD_SDK_REPO main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
             curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
