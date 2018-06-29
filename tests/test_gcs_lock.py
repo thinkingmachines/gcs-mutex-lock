@@ -1,8 +1,9 @@
 from gcs_mutex_lock import gcs_lock
 
+TEST_LOCK = 'gs://circleci-gcs-mutex-lock/test.lock'
+
 
 # noinspection PyProtectedMember
 def test_lock_basic():
-    # Make sure no error
-    acquired = gcs_lock.lock('gs://psc-demand/dataflow/hello.txt')
+    acquired = gcs_lock.lock(TEST_LOCK)
     assert acquired
